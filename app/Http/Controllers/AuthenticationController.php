@@ -14,7 +14,7 @@ class AuthenticationController extends Controller
     {
         if(Auth::user()->hasRole('admin'))
         {
-
+            return redirect()->route('categories.index');
         }else{
             return redirect()->route('shop.index');
         }

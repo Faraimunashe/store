@@ -6,8 +6,8 @@
                 :key="index"
                 :class="{
                     'bg-gray-200 text-gray-500 cursor-not-allowed': !link.url,
-                    'bg-purple-600 text-white': link.active,
-                    'hover:bg-purple-500 hover:text-white': link.url && !link.active,
+                    'bg-blue-600 text-white': link.active,
+                    'hover:bg-blue-500 hover:text-white': link.url && !link.active,
                     'text-gray-700 border border-gray-300': !link.active && link.url,
                 }"
                 class="px-4 py-2 border rounded shadow-sm transition duration-200 ease-in-out"

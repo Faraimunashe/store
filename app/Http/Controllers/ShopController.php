@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -11,7 +12,10 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        return inertia('ShopPage');
+        $products = Product::with('images')->paginate(12);
+        return inertia('ShopPage', [
+            'products' => $products
+        ]);
     }
 
     /**
