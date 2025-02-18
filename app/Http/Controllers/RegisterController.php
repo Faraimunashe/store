@@ -49,7 +49,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
-            $user->addRole('user');
+            $user->addRole('admin');
 
             return back()->with(['success' => 'User created successfully']);
         }catch (Exception $e) {

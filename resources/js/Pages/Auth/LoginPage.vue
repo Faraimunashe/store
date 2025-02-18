@@ -1,4 +1,5 @@
 <template>
+    <Head title="Login" />
     <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700">
       <!-- Login Card -->
       <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-8 animate-fadeIn transform transition duration-500 ease-in-out">

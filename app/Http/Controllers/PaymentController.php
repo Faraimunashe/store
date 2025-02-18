@@ -2,30 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
-use Exception;
+use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ShopController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->search;
-        $products = Product::with('images')->paginate(12);
-        if(isset($search)){
-            $products = Product::with('images')
-            ->where('name', 'LIKE', '%'.$search.'%')
-            ->paginate(12);
-        }
-        $categories =  Category::all();
-        return inertia('ShopPage', [
-            'products' => $products,
-            'categories' => $categories
-        ]);
+        //
     }
 
     /**
@@ -33,7 +21,10 @@ class ShopController extends Controller
      */
     public function create()
     {
-        //
+        $cart = Cart::with('product.images')->where('user_id', Auth::id())->get();
+        return inertia('CheckoutPage', [
+            'cart' => $cart
+        ]);
     }
 
     /**
@@ -49,14 +40,7 @@ class ShopController extends Controller
      */
     public function show(string $id)
     {
-        try{
-            $product = Product::with('images')->findOrFail($id);
-            return inertia('DetailsPage', [
-                'product' => $product
-            ]);
-        }catch(Exception $e){
-            return back()->withErrors(['error' => $e->getMessage()]);
-        }
+        //
     }
 
     /**
