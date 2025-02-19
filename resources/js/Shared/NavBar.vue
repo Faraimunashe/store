@@ -9,8 +9,8 @@
                 <Link v-if="role !== 'admin'" href="/shop" class="flex items-center text-gray-700 hover:text-blue-600 transition">
                     <i class="fas fa-store mr-2"></i> Shop
                 </Link>
-                <Link v-if="role !== 'admin'" href="#" class="flex items-center text-gray-700 hover:text-blue-600 transition">
-                    <i class="fas fa-envelope mr-2"></i> Contact
+                <Link v-if="role !== 'admin'" href="/orders" class="flex items-center text-gray-700 hover:text-blue-600 transition">
+                    <i class="fas fa-envelope mr-2"></i> Orders
                 </Link>
                 <Link v-if="username !== 'Guest' && role !== 'admin'" href="/cart" class="flex items-center text-gray-700 hover:text-blue-600 transition">
                     <i class="fas fa-shopping-cart mr-2"></i> Cart ({{ cart_count }})

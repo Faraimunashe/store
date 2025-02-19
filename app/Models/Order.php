@@ -13,7 +13,7 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function orderItems()
+    public function order_items()
     {
         return $this->hasMany(OrderItem::class);
     }
@@ -23,8 +23,13 @@ class Order extends Model
         return $this->hasMany(OrderPayment::class);
     }
 
-    public function tracking()
+    public function trackings()
     {
-        return $this->hasOne(OrderTracking::class);
+        return $this->hasMany(OrderTracking::class);
+    }
+
+    public function address()
+    {
+        return $this->hasOne(OrderAddress::class);
     }
 }

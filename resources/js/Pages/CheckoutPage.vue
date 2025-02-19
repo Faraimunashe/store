@@ -5,11 +5,11 @@
             <!-- Billing Details -->
             <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md">
                 <h2 class="text-3xl font-bold text-gray-800 mb-6">Billing Details</h2>
-                <form @submit.prevent="placeOrder">
+                <form @submit.prevent="submit">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-gray-600 mb-2">Full Name</label>
-                            <input v-model="form.name" type="text" class="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500">
+                            <input v-model="form.fullname" type="text" class="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
                             <label class="block text-gray-600 mb-2">Email Address</label>
@@ -43,7 +43,6 @@
                         <label class="block text-gray-600 mb-2">Enter Ecocash Number</label>
                         <input v-model="form.ecocash" type="tel" class="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500">
                     </div>
-                    {{ form }}
                     <button type="submit" class="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg shadow-md font-semibold hover:bg-blue-700 transition">
                         Place Order
                     </button>
@@ -95,7 +94,7 @@ export default {
     },
     setup() {
         const form = useForm({
-            name: '',
+            fullname: '',
             email: '',
             address: '',
             city: '',

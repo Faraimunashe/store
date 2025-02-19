@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShopController;
@@ -35,4 +36,5 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::resource('shop', ShopController::class);
     Route::resource('cart', CartController::class);
     Route::resource('payments', PaymentController::class);
+    Route::resource('orders', OrderController::class);
 });
