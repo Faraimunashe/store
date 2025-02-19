@@ -1,9 +1,9 @@
 <template>
-    <Head title="My Orders" />
+    <Head title="All Orders" />
     <div class="bg-gray-100 py-12 px-6 mt-16 mb-20">
         <div class="max-w-8xl mx-auto bg-white p-6 rounded-lg shadow-md">
             <h2 class="text-3xl font-bold text-gray-800 mb-6">
-                <i class="fa fa-list text-blue-600 mr-2"></i> My Orders
+                <i class="fa fa-list text-blue-600 mr-2"></i> All Orders
             </h2>
 
             <!-- Search Field -->
@@ -33,6 +33,9 @@
                                 <i class="fa fa-box text-yellow-500 mr-2"></i> Status
                             </th>
                             <th class="py-3 px-4 text-left border">
+                                <i class="fa fa-box text-yellow-500 mr-2"></i> Customer
+                            </th>
+                            <th class="py-3 px-4 text-left border">
                                 <i class="fa fa-calendar-alt text-gray-500 mr-2"></i> Date
                             </th>
                             <th class="py-3 px-4 text-left border">
@@ -45,12 +48,13 @@
                             <td class="py-3 px-4">{{ order.reference }}</td>
                             <td class="py-3 px-4">${{ order.amount }}</td>
                             <td class="py-3 px-4">{{ order.status }}</td>
+                            <td class="py-3 px-4">{{ order.user.name }}</td>
                             <td class="py-3 px-4">{{ new Date(order.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}</td>
                             <td class="py-3 px-4">
-                                <Link :href="`/orders/${order.id}`"
+                                <Link :href="`/adminorders/${order.id}`"
                                     class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition flex items-center"
                                 >
-                                    <i class="fa fa-eye mr-2"></i> Track Order
+                                    <i class="fa fa-eye mr-2"></i> Show Order
                                 </Link>
                             </td>
                         </tr>
@@ -59,16 +63,14 @@
 
                 <p v-if="orders.data.length === 0" class="text-center text-gray-600 mt-6">No orders found.</p>
             </div>
-            <Pagination v-if="orders.data.length !== 0" :links="orders.links" />
         </div>
+        <Pagination v-if="orders.data.length !== 0" :links="orders.links" />
     </div>
-    <Footer />
 </template>
 
 <script>
-import Layout from "../Shared/Layout.vue";
-import Footer from "../Shared/Footer.vue";
-import Pagination from "../Shared/Pagination.vue";
+import Layout from "../../Shared/Layout.vue";
+import Pagination from "../../Shared/Pagination.vue";
 import { ref, watch } from 'vue';
 import { router } from '@inertiajs/vue3';
 
@@ -78,14 +80,14 @@ export default {
         orders: Object
     },
     components: {
-        Footer, Pagination
+        Pagination
     },
     setup() {
         const search = ref('');
 
         watch(search, (value) => {
             router.get(
-                '/orders',
+                '/adminorders',
                 { search: value },
                 {
                     preserveState: true,

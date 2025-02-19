@@ -1,4 +1,5 @@
 <template>
+    <vue3-snackbar top right :duration="4000"></vue3-snackbar>
     <Head title="Checkout" />
     <div class="bg-gray-100 py-12 px-6 mt-16">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">

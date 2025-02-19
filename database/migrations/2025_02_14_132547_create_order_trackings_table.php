@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('order_trackings', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("order_id");
+            $table->string("carrier");
+            $table->string("contact");
             $table->string("status");
             $table->text("remarks")->nullable();
             $table->date("expected_delivery_date");

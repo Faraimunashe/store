@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('adminorders', \App\Http\Controllers\Admin\OrderController::class);
 });
 
 

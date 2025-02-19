@@ -21,7 +21,7 @@
                 <Link v-if="role === 'admin'" href="/products" class="flex items-center text-gray-700 hover:text-blue-600 transition">
                     <i class="fas fa-home mr-2"></i> Products
                 </Link>
-                <Link v-if="role === 'admin'" href="/orders" class="flex items-center text-gray-700 hover:text-blue-600 transition">
+                <Link v-if="role === 'admin'" href="/adminorders" class="flex items-center text-gray-700 hover:text-blue-600 transition">
                     <i class="fas fa-home mr-2"></i> Orders
                 </Link>
 
